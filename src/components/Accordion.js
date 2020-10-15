@@ -2,11 +2,16 @@ import React from "react";
 
 // render out jsx using class names - semantic-ui
 const Accordion = ({ items }) => {
-  const renderedItems = items.map((item) => {
+  // helper function/method:
+  const onTitleClick = (index) => {
+    console.log("title clicked", index);
+  };
+
+  const renderedItems = items.map((item, index) => {
     return (
-      // using React.Fragment to not generate an extra div html to semantic-ui
+      // using React.Fragment to avoid generate an extra div html to semantic-ui:
       <React.Fragment key={item.title}>
-        <div className="title active">
+        <div className="title active" onClick={() => onTitleClick(index)}>
           <i className="dropdown icon"></i>
           {item.title}
         </div>
