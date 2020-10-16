@@ -4,7 +4,7 @@ import Accordion from "./components/Accordion";
 const items = [
   {
     title: "What is React?",
-    content: "React is a JS framework.",
+    content: "React is a JS framework. And it's pretty fun to use.",
   },
   {
     title: "What is JSX?",

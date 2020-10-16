@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 // render out jsx using class names - semantic-ui
 const Accordion = ({ items }) => {
-  // helper function/method:
+  
+  // handling State:
+const [activeIndex , setActiveIndex] = useState(null);
+
+// helper function/method:
   const onTitleClick = (index) => {
     console.log("title clicked", index);
   };
