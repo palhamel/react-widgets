@@ -9,16 +9,20 @@ const [activeIndex , setActiveIndex] = useState(null);
   const onTitleClick = (index) => {
     setActiveIndex(index);
   };
+  console.log("index clicked", activeIndex);
 
   const renderedItems = items.map((item, index) => {
+
+    const activeClass = index === activeIndex ? 'active' : '' ;
+
     return (
       // using React.Fragment to avoid generate an extra div html to semantic-ui:
       <React.Fragment key={item.title}>
-        <div className="title active" onClick={() => onTitleClick(index)}>
+        <div className={`title ${activeClass}`} onClick={() => onTitleClick(index)}>
           <i className="dropdown icon"></i>
           {item.title}
         </div>
-        <div className="content active">
+        <div className={`content ${activeClass}`}>
           <p>{item.content}</p>
         </div>
       </React.Fragment>
@@ -26,7 +30,7 @@ const [activeIndex , setActiveIndex] = useState(null);
   });
 return <div className="ui styled accordion">
     {renderedItems}
-    <h1>{activeIndex}</h1>
+    {/* <h1>{activeIndex}</h1> */}
   </div>;
 };
 
