@@ -2,13 +2,12 @@ import React, { useState } from "react";
 
 // render out jsx using class names - semantic-ui
 const Accordion = ({ items }) => {
-  
-  // handling State:
+// init new State:
 const [activeIndex , setActiveIndex] = useState(null);
 
-// helper function/method:
+  // helper function/method onClick:
   const onTitleClick = (index) => {
-    console.log("title clicked", index);
+    setActiveIndex(index);
   };
 
   const renderedItems = items.map((item, index) => {
@@ -25,7 +24,10 @@ const [activeIndex , setActiveIndex] = useState(null);
       </React.Fragment>
     );
   });
-  return <div className="ui styled accordion">{renderedItems}</div>;
+return <div className="ui styled accordion">
+    {renderedItems}
+    <h1>{activeIndex}</h1>
+  </div>;
 };
 
 export default Accordion;
