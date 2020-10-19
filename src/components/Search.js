@@ -20,7 +20,10 @@ const Search = () => {
       });
       setResults(data.query.search);
     };
-    search();
+    // do a earch only when there is a 'term':
+    if (term) {
+      search();
+    }
   }, [term]);
 
   const renderedResults = results.map((resultData) => {
