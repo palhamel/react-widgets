@@ -29,10 +29,13 @@ const Search = () => {
       <div key={resultData.pageid} className="item">
         <div className="right floated content">
           <a 
-            href='https://' 
+            href={`https://en.wikipedia.org?curid=${resultData.pageid}`} 
+            target="_blank"
+            rel="noopener noreferrer"
             className='ui button orange'
           >
-            Info </a>
+            Info 
+          </a>
         </div>
         <div className="content">
           <div className="header">{resultData.title}</div>
