@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Search = () => {
-  const [term, setTerm] = useState('greta thunberg');
+  const [term, setTerm] = useState("greta thunberg");
   // console.log(term);
   const [results, setResults] = useState([]);
   // console.log(results);
@@ -23,6 +23,26 @@ const Search = () => {
     search();
   }, [term]);
 
+  const renderedResults = results.map((resultData) => {
+    console.log(resultData.title);
+    return (
+      <div key={resultData.pageid} className="item">
+        <div className="right floated content">
+          <a 
+            href='https://' 
+            className='ui button orange'
+          >
+            Info </a>
+        </div>
+        <div className="content">
+          <div className="header">{resultData.title}</div>
+          <span dangerouslySetInnerHTML={{ __html: resultData.snippet}}></span>
+          {/* {resultData.snippet} */}
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div>
       <div className="ui form">
@@ -35,6 +55,7 @@ const Search = () => {
           />
         </div>
       </div>
+      <div className="ui celled list">{renderedResults}</div>
     </div>
   );
 };
