@@ -25,7 +25,11 @@ const Search = () => {
       if (term) {
         search();
       }
-    }, 800);
+    }, 1000);
+    
+    return () => {
+      clearTimeout(timeoutId);
+    }
   }, [term]);
 
   const renderedResults = results.map((resultData) => {
