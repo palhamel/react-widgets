@@ -20,10 +20,12 @@ const Search = () => {
       });
       setResults(data.query.search);
     };
-    // do a earch only when there is a 'term':
-    if (term) {
-      search();
-    }
+    // do a search only when there is a 'term':
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 800);
   }, [term]);
 
   const renderedResults = results.map((resultData) => {
@@ -31,18 +33,18 @@ const Search = () => {
     return (
       <div key={resultData.pageid} className="item">
         <div className="right floated content">
-          <a 
-            href={`https://en.wikipedia.org?curid=${resultData.pageid}`} 
+          <a
+            href={`https://en.wikipedia.org?curid=${resultData.pageid}`}
             target="_blank"
             rel="noopener noreferrer"
-            className='ui button orange'
+            className="ui button orange"
           >
-            Info 
+            Info
           </a>
         </div>
         <div className="content">
           <div className="header">{resultData.title}</div>
-          <span dangerouslySetInnerHTML={{ __html: resultData.snippet}}></span>
+          <span dangerouslySetInnerHTML={{ __html: resultData.snippet }}></span>
           {/* {resultData.snippet} */}
         </div>
       </div>
