@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Search = () => {
-  const [term, setTerm] = useState("greta thunberg");
+  const [term, setTerm] = useState("Christmas");
   // console.log(term);
   const [results, setResults] = useState([]);
   // console.log(results);
@@ -20,20 +20,27 @@ const Search = () => {
       });
       setResults(data.query.search);
     };
-    // do a search only when there is a 'term':
-    const timeoutId = setTimeout(() => {
-      if (term) {
-        search();
-      }
-    }, 1000);
-    
-    return () => {
-      clearTimeout(timeoutId);
+
+    // first page load - instant search, no timeout:
+    if (term && !results.length) {
+      search();
+    } else {
+      // do a search only when there is a 'term':
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 1000);
+
+      //reset timer:
+      return () => {
+        clearTimeout(timeoutId);
+      };
     }
   }, [term]);
 
   const renderedResults = results.map((resultData) => {
-    console.log(resultData.title);
+    // console.log(resultData.title);
     return (
       <div key={resultData.pageid} className="item">
         <div className="right floated content">
