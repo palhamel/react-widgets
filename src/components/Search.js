@@ -4,8 +4,19 @@ import axios from "axios";
 const Search = () => {
   const [term, setTerm] = useState("Christmas");
   // console.log(term);
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
   // console.log(results);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [term]);
 
   useEffect(() => {
     const search = async () => {
@@ -37,7 +48,7 @@ const Search = () => {
         clearTimeout(timeoutId);
       };
     }
-  }, [term]);
+  }, [term, results.length]);
 
   const renderedResults = results.map((resultData) => {
     // console.log(resultData.title);
