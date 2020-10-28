@@ -26,29 +26,13 @@ const Search = () => {
           list: "search",
           origin: "*",
           format: "json",
-          srsearch: term,
+          srsearch: debouncedTerm,
         },
       });
       setResults(data.query.search);
     };
-
-    // first page load - instant search, no timeout:
-    if (term && !results.length) {
-      search();
-    } else {
-      // do a search only when there is a 'term':
-      const timeoutId = setTimeout(() => {
-        if (term) {
-          search();
-        }
-      }, 1000);
-
-      //reset timer:
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [term, results.length]);
+    search();
+  }, [debouncedTerm]);
 
   const renderedResults = results.map((resultData) => {
     // console.log(resultData.title);
