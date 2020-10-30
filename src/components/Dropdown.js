@@ -5,6 +5,12 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   // console.log(options);
 
   const renderedOptions = options.map((optionData) => {
+    
+    // hide the selected value from render in the list:
+    if (optionData.value === selected.value) {
+      return null;
+    }
+
     return (
       <div
         key={optionData.value}
