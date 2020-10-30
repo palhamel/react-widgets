@@ -11,12 +11,18 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
   // event listener on body element to close drop down:
   useEffect(() => {
-    document.body.addEventListener("click", (event) => {
+    const onBodyClick = (event) => {
       if (ref.current.contains(event.target)) {
         return;
       }
       setOpen(false);
-    });
+    };
+    document.body.addEventListener("click", onBodyClick );
+
+    // cleanup useEffect state:
+    return () => {
+      document.body.removeEventListener('click', onBodyClick)
+    };
   }, []);
 
   const renderedOptions = options.map((optionData) => {
