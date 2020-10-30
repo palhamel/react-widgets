@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
-  // console.log("selected:", selected);
-  // console.log(options);
-
   // for drop down menu css:
   const [open, setOpen] = useState(false);
-  console.log(open);
   const ref = useRef();
 
   // event listener on body element to close drop down:
@@ -17,11 +13,10 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       }
       setOpen(false);
     };
-    document.body.addEventListener("click", onBodyClick );
-
+    document.body.addEventListener("click", onBodyClick);
     // cleanup useEffect state:
     return () => {
-      document.body.removeEventListener('click', onBodyClick)
+      document.body.removeEventListener("click", onBodyClick);
     };
   }, []);
 
@@ -41,8 +36,6 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       </div>
     );
   });
-
-  console.log(ref.current);
 
   return (
     <div ref={ref} className="ui form">

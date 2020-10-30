@@ -1,3 +1,9 @@
+![Alt Text](https://media.giphy.com/media/6heBQSjt2IoA8/giphy.gif)
+
+
+
+-----------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
