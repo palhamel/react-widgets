@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
+// import {useState} from "react";
 // import Accordion from "./components/Accordion";
 // import Search from "./components/Search";
-import Dropdown from "./components/Dropdown";
+// import Dropdown from "./components/Dropdown";
+import Translate from './components/Translate'
 
 // const items = [
 //   {
@@ -21,35 +23,36 @@ import Dropdown from "./components/Dropdown";
 //   },
 // ];
 
-const options = [
-  {
-    label: "The red",
-    value: "red",
-  },
-  {
-    label: "The green",
-    value: "green",
-  },
-  {
-    label: "The blue",
-    value: "blue",
-  },
-];
+// const options = [
+//   {
+//     label: "The red",
+//     value: "red",
+//   },
+//   {
+//     label: "The green",
+//     value: "green",
+//   },
+//   {
+//     label: "The blue",
+//     value: "blue",
+//   },
+// ];
 
 export default () => {
 
-  const [selected, setSelected] = useState(options[0]);
+  // const [selected, setSelected] = useState(options[0]);
 
 
   return (
     <div>
       {/* <Accordion items={items} /> */}
       {/* <Search /> */}
-      <Dropdown 
+      {/* <Dropdown 
         selected={selected} 
         onSelectedChange={setSelected}
         options={options} 
-      />
+      /> */}
+      <Translate />
     </div>
   );
 };
