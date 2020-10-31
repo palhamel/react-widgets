@@ -5,6 +5,18 @@ const Convert = ({ language, text }) => {
   const apiUrl = "https://translation.googleapis.com/language/translate/v2";
   const [translated, setTranslated] = useState("");
 
+  const [debouncedText, setDebouncedText] = useState(text);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedText(text);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [text]);
+
   useEffect(() => {
     // helper function:
     const makeTranslation = async () => {
@@ -13,7 +25,7 @@ const Convert = ({ language, text }) => {
         {},
         {
           params: {
-            q: text,
+            q: debouncedText,
             target: language.value,
             key: process.env.REACT_APP_GOOGLE_API_KEY,
           },
@@ -21,9 +33,8 @@ const Convert = ({ language, text }) => {
       );
       setTranslated(data.data.translations[0].translatedText);
     };
-
     makeTranslation();
-  }, [language, text]);
+  }, [language, debouncedText]);
 
   return (
     <div>
