@@ -14,6 +14,7 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
       setOpen(false);
     };
     document.body.addEventListener("click", onBodyClick);
+    
     // cleanup useEffect state:
     return () => {
       document.body.removeEventListener("click", onBodyClick);
