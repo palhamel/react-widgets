@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Convert = ({ language, text }) => {
-  const apiUrl = "https://translation.googleapis.com/language/translate/v2";
-  const [translated, setTranslated] = useState("");
+const apiUrl = "https://translation.googleapis.com/language/translate/v2";
 
+const Convert = ({ language, text }) => {
+  const [translated, setTranslated] = useState("");
   const [debouncedText, setDebouncedText] = useState(text);
 
   useEffect(() => {

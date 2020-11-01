@@ -3,7 +3,8 @@ import React from "react";
 // import Accordion from "./components/Accordion";
 // import Search from "./components/Search";
 // import Dropdown from "./components/Dropdown";
-import Translate from './components/Translate'
+// import Translate from './components/Translate'
+import AxiosFetchWithAsync from './components/PracticeAxios';
 
 // const items = [
 //   {
@@ -52,7 +53,8 @@ export default () => {
         onSelectedChange={setSelected}
         options={options} 
       /> */}
-      <Translate />
+      {/* <Translate /> */}
+      <AxiosFetchWithAsync />
     </div>
   );
 };
