@@ -1,10 +1,12 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
 // import AxiosFetchWithAsync from './components/practice/PracticeAxios';
+
+import Route from "./components/Route";
 
 const items = [
   {
@@ -38,7 +40,7 @@ const options = [
     value: "blue",
   },
 ];
-
+/*
 // routing via pathname object:
 const showAccordion = () => {
   if (window.location.pathname === "/") {
@@ -59,25 +61,39 @@ const showDropdown = () => {
 };
 
 const showTranslate = () => {
-  if (window.location.pathname === '/translate') {
-    return <Translate />
+  if (window.location.pathname === "/translate") {
+    return <Translate />;
   }
-}
+};
+*/
 
 export default () => {
   return (
     <div>
-      {showAccordion()}
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          // selected={selected}
+          // onSelectedChange={setSelected}
+          // options={options}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
+
+      {/* {showAccordion()}
       {showList()}
       {showDropdown()}
-      {showTranslate()}
-      {/* <Accordion items={items} /> */}
+      {showTranslate()} */}
+
+      {/* <Accordion /> */}
       {/* <Search /> */}
-      {/* <Dropdown 
-        selected={selected} 
-        onSelectedChange={setSelected}
-        options={options} 
-      /> */}
       {/* <Translate /> */}
       {/* <AxiosFetchWithAsync /> */}
     </div>
