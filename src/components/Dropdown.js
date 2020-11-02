@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ label, options, selected, onSelectedChange }) => {
+  console.log(selected)
   // for drop down menu css:
   const [open, setOpen] = useState(false);
   const ref = useRef();
@@ -47,7 +48,8 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
           className={`ui selection dropdown ${open ? "visible active" : ""}`}
         >
           <i className="dropdown icon"></i>
-          <div className="text">{`Selected label is:  ${selected.label}`}</div>
+          <div className="text">{selected.label}</div>
+          {/* <div className="text">{`Selected label is: ${selected.label}`}</div> */}
           <div className={`menu ${open ? "visible transition" : ""}`}>
             {renderedOptions}
           </div>

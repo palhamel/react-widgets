@@ -63,14 +63,14 @@ const showDropdown = () => {
 };
 
 const showTranslate = () => {
-  if (window.location.pathname === "/translate") {
+  if (window.location.pathname === "/translate") { 
     return <Translate />;
   }
 };
 */
 
 export default () => {
-  const [selected, setSelected] = useState([0]);
+  const [selected, setSelected] = useState(options[0]);
 
   return (
     <div>
@@ -86,7 +86,7 @@ export default () => {
           label="Select a color"
           options={options}
           selected={selected}
-          onSelectedChange={setSelected}
+          onSelectedChange={setSelected} 
         />
       </Route>
       <Route path="/translate">
